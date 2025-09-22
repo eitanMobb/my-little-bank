@@ -1,0 +1,61 @@
+@model List<MyLittleBank.Models.Account>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Welcome, @ViewBag.UserName!</h2>
+        <p class="text-muted">Your account overview</p>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var account in Model)
+    {
+        <div class="col-md-6 mb-4">
+            <div class="card @(account.AccountType == "Checking" ? "border-primary" : "border-success")">
+                <div class="card-header @(account.AccountType == "Checking" ? "bg-primary text-white" : "bg-success text-white")">
+                    <h5 class="card-title mb-0">
+                        @account.AccountType Account
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Account Number: @account.AccountNumber</h6>
+                    <h3 class="card-text text-primary">$@account.Balance.ToString("F2")</h3>
+                    <small class="text-muted">Created: @account.CreatedAt.ToString("MMM dd, yyyy")</small>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a asp-action="Transfer" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-exchange-alt"></i> Transfer Money
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a asp-action="Search" class="btn btn-info btn-lg w-100">
+                            <i class="fas fa-search"></i> Search Accounts
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-secondary btn-lg w-100" onclick="location.reload()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

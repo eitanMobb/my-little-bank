@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Vulnerable Bank - Login</h3>
+            </div>
+            <div class="card-body">
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+
+                <form asp-action="Login" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+                <hr>
+                <div class="alert alert-info">
+                    <h6>Sample Accounts:</h6>
+                    <ul class="mb-0">
+                        <li><strong>john.doe</strong> / password123</li>
+                        <li><strong>jane.smith</strong> / mypassword</li>
+                        <li><strong>admin</strong> / admin123</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h6>⚠️ Security Warning:</h6>
+                    <p class="mb-0">This application contains intentional SQL injection vulnerabilities for educational purposes. Do not use in production!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

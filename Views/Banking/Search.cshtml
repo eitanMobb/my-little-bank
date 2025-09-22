@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Search Accounts";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Search Accounts</h2>
+        <p class="text-muted">Search for accounts by name or account number</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>Search Form</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Search" method="post">
+                    <div class="mb-3">
+                        <label for="searchTerm" class="form-label">Search Term</label>
+                        <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Enter name or account number" required>
+                        <div class="form-text">Search by first name, last name, or account number</div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Search Tips</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><strong>Names:</strong> John, Jane, Admin</li>
+                    <li><strong>Account Numbers:</strong> CHK001, SAV001, etc.</li>
+                    <li><strong>Partial matches:</strong> "CHK" or "John"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="alert alert-danger">
+            <h6>🚨 Critical Security Vulnerability:</h6>
+            <p class="mb-0">This search function allows you to view ALL accounts in the system, not just your own. This is a major security vulnerability that exposes sensitive customer data. In a real banking application, this would be a serious breach of privacy and security regulations.</p>
+        </div>
+    </div>
+</div>
